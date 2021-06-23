@@ -1,25 +1,33 @@
 <?php
-
-
-
 $success = false ;
 $failed = false ;
 
 require("includes/config.php");
 if(isset($_POST['submit'])){
 $pname=$_POST['packagename'];
+$pname = mysqli_real_escape_string($con, $pname);
+
 $ptype=$_POST['packagetype'];	
+$ptype = mysqli_real_escape_string($con, $ptype);
+
 $plocation=$_POST['packagelocation'];
+$plocation = mysqli_real_escape_string($con, $plocation);
+
 $pprice=$_POST['packageprice'];	
+$pprice = mysqli_real_escape_string($con, $pprice);
+
 $pfeatures=$_POST['packagefeatures'];
+$pfeatures = mysqli_real_escape_string($con, $pfeatures);
+
 $pdetails=$_POST['packagedetails'];	
+$pdetails = mysqli_real_escape_string($con, $pdetails);
+
 $pimage=$_FILES["packageimage"]["name"];
 move_uploaded_file($_FILES["packageimage"]["tmp_name"],"pacakgeimages/".$_FILES["packageimage"]["name"]);
 
 $sql="INSERT INTO tourpackagestbl(PackageName,PackageType,PackageLocation,PackagePrice,PackageFetures,PackageDetails,PackageImage) 
 VALUES('" . $pname . "','" . $ptype . "','" . $plocation . "','" . $pprice ."','" . $pfeatures . "' ,'" . $pdetails . "','" . $pimage . "')";
-
-$result =mysqli_query($con, $sql) or die(mysqli_error($con));
+=
 
 
 }
@@ -70,7 +78,7 @@ $result =mysqli_query($con, $sql) or die(mysqli_error($con));
 			
   	         <div class="tab-content">
 						<div class="tab-pane active" id="horizontal-form">
-							<form class="form-horizontal" name="package" action="create-package.php" method="POST" enctype="multipart/form-data">
+							<form class="form-horizontal" name="package"  method="POST" enctype="multipart/form-data">
 								<div class="form-group">
 									<label for="focusedinput" class="col-sm-2 control-label">Package Name</label>
 									<div class="col-sm-8">

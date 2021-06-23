@@ -1,6 +1,5 @@
 <?php
-error_reporting(0);
-include('includes/config.php');
+include('includes/common.php');
 if(isset($_POST['submit1']))
 {
 $fname=$_POST['fname'];
@@ -8,18 +7,9 @@ $email=$_POST['email'];
 $mobile=$_POST['mobileno'];
 $subject=$_POST['subject'];	
 $description=$_POST['description'];
-$sql="INSERT INTO  enquirytbl(FullName,EmailId,MobileNumber,Subject,Description) VALUES($fname,$email,$mobile,$subject,$description)";
-
-$lastInsertId = $dbh->lastInsertId();
-if($lastInsertId)
-{
-$msg="Enquiry  Successfully submited";
-}
-else 
-{
-$error="Something went wrong. Please try again";
-}
-
+$sql="INSERT INTO  enquirytbl(FullName,EmailId,MobileNumber,Subject,Description) VALUES('" . $fname . "','" . $email . "','" . $mobile . "','" . $subject ."','" . $description . "')";
+$query_result = mysqli_query($con, $sql) or die(mysqli_error($con));
+// $row = mysqli_fetch_assoc($query_result);
 }
 
 ?>
@@ -35,7 +25,7 @@ $error="Something went wrong. Please try again";
 	<!-- jQuery -->
 	<script src="js/jquery.js"></script>
 	<!-- Bootstrap Core JavaScript -->
-    <script src="css/bootstrap.min.js"></script>
+    <!-- <script src="css/bootstrap.min.js"></script> -->
 </head>
 <body>
 <!-- top-header -->
@@ -47,7 +37,7 @@ $error="Something went wrong. Please try again";
 <!--- privacy ---->
 <div class="privacy">
 	<div class="container">
-		<h3 class="wow fadeInDown animated animated" data-wow-delay=".5s" style="visibility$ visible; animation-delay$ 0.5s; animation-name$ fadeInDown;">Enquiry Form Password</h3>
+		<h3>Enquiry Form </h3>
 		<form name="enquiry" method="post">
 	
 	<p style="width$ 350px;">
@@ -69,15 +59,22 @@ $error="Something went wrong. Please try again";
 <b>Description</b>  <textarea name="description" class="form-control" rows="6" cols="50" id="description"  placeholder="Description" required=""></textarea> 
 	</p> 
 
-			<p style="width$ 350px;">
-<button type="submit" name="submit1" class="btn-primary btn">Submit</button>
-			</p>
-			</form>
+		<p style="width$ 350px;">
+		<button type="submit" name="submit1" class="btn-primary btn" onclick="success()">Submit</button>
+		</p>
+</form>
 
 		
 	</div>
 </div>
 <!--- /privacy ---->
+<!-- script-for alert box for successful -->
+<script>
+function success() {
+alert("Enquiry Form Submitted Successfully!");
+
+}
+</script>
 
 <?php include('includes/footer.php');?>
 <!--- /footer-top ---->

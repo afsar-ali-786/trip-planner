@@ -2,13 +2,13 @@
 
 include('includes/config.php');
 
-// if(isset($_GET['submit']))
-// {
-// 	$pagetype=$_GET['type'];
-// 	$pagedetails=$_POST['pgedetails'];
-// $sql = "UPDATE pagestbl SET detail=$pagedetails WHERE type=$pagetype";
-// $result =mysqli_query($con, $sql) or die(mysqli_error($con));
-
+if(isset($_GET['submit']))
+{
+	$pagetype=$_GET['type'];
+	$pagedetails=$_POST['pgedetails'];
+$sql = "UPDATE pagestbl SET detail=$pagedetails WHERE type=$pagetype";
+$result =mysqli_query($con, $sql) or die(mysqli_error($con));
+}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -122,31 +122,8 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 				case "aboutus" :
 				echo "About US";
 				break;
-				
-				case "software" :
-				echo "Offers";
-				break;	
-				
-				case "aspnet" :
-				echo "Vission And MISSION";
-				break;		
-				
-				case "objectives" :
-				echo "Objectives";
-				break;						
-				
-				case "disclaimer" :
-				echo "Disclaimer";
-				break;
-				
-				case "vbnet" :
-				echo "Partner With Us";
-				break;
-				
-				case "candc" :
-				echo "Super Brand";
-				break;
-				
+	
+		
 				case "contact" :
 				echo "Contact Us";
 				break;			
@@ -177,7 +154,6 @@ $pagetype=$_GET['type'];
 $sql1 = "SELECT detail from pagestbl where type=$pagetype";
 $select_query_result = mysqli_query($con, $sql1) or die(mysqli_error($con));
 
-$cnt=1;
 if(mysqli_num_rows($select_query_result) > 0)
 { 
 while($row = mysqli_fetch_assoc($select_query_result))

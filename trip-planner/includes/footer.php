@@ -1,7 +1,7 @@
 <footer>
-    <div class="container">
-        <center>
-            <p> Trip Planner. All Rights Reserved | Contact Us: +91 9648028280</p>	
-        </center>
-    </div>
+    
+      <h1>Trip<span class="x">planner</span></h1>
+        <p>&copy 2021</p>
+          
+
 </footer>

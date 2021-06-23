@@ -1,3 +1,7 @@
+
+
+
+
 body,
 h1,			 h2,
 			 h3,
@@ -11,12 +15,15 @@ h1,			 h2,
 			 #content{
 				 min-height: 600px;
 			 }
+
+
+
 			 
 			 #banner_image {
 				 padding-bottom: 50px;
 				 text-align: center;
 				 color: #f8f8f8;
-				 background: url(img/goa.jpg) no-repeat center center;
+				 background: url(img/banner.jpg) no-repeat center center;
 				 background-size: cover;
 			 }
 			
@@ -231,6 +238,7 @@ color: #999;
 	background: url(img/signup_bg.jpg) no-repeat center center;
 	background-size: cover;
 }
+
 /*-- signup  --*/
 #signup-bg {
 	padding-bottom: 50px;
@@ -4643,7 +4651,19 @@ ul.set-1 {
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
 }
 
-
+/*footer start*/
+.x {
+  color: #00c6f2;
+}
+footer {
+  background-color: #1e2021;
+  color: white;
+  font-size: 1.1rem;
+  text-align: center;
+  height: 30vh;
+  padding-top: 3.5rem;
+}
+/*footer-end*/
 
 
 

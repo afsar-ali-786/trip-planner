@@ -95,7 +95,7 @@ while($row = mysqli_fetch_assoc($select_query_result)){
 							<div class="four-text">
 								<h3>Enquiries</h3>
 								<?php
-$sql1 = "SELECT count(*) as count from userstbl";
+$sql1 = "SELECT count(*) as count from enquirytbl";
 $select_query_result = mysqli_query($con, $sql1) or die(mysqli_error($con));             
 while($row = mysqli_fetch_assoc($select_query_result)){
 	$cnt= $row['count'];
@@ -140,7 +140,7 @@ while($row = mysqli_fetch_assoc($select_query_result)){
 
 
 <br>
-<br><br><br>
+<br><br>
 <br>
 <!-- ?php include('includes/footer.php');?> -->
 </div>

@@ -9,25 +9,11 @@ $todate=$_POST['todate'];
 $comment=$_POST['comment'];
 $status=0;
 $sql="INSERT INTO tblbooking(PackageId,UserEmail,FromDate,ToDate,Comment,status) VALUES(:pid,:useremail,:fromdate,:todate,:comment,:status)";
-$query = $dbh->prepare($sql);
-// $query->bindParam(':pid',$pid,PDO::PARAM_STR);
-// $query->bindParam(':useremail',$useremail,PDO::PARAM_STR);
-// $query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
-// $query->bindParam(':todate',$todate,PDO::PARAM_STR);
-// $query->bindParam(':comment',$comment,PDO::PARAM_STR);
-// $query->bindParam(':status',$status,PDO::PARAM_STR);
-$query->execute();
-$lastInsertId = $dbh->lastInsertId();
-if($lastInsertId)
-{
-$msg="Booked Successfully";
-}
-else 
-{
-$error="Something went wrong. Please try again";
-}
+$result =mysqli_query($con, $sql) or die(mysqli_error($con));
 
-}
+
+
+
 ?>
 
 <!DOCTYPE HTML>
@@ -78,14 +64,13 @@ $error="Something went wrong. Please try again";
 $pid=intval($_GET['pkgid']);
 $select_query = "SELECT * from tourpackagestbl where PackageId=$pid";
 $select_query_result = mysqli_query($con, $select_query) or die(mysqli_error($con));//$query = $dbh->prepare($sql);
-$row = mysqli_fetch_array($select_query_result);																					// $query -> bindParam(':pid', $pid, PDO::PARAM_STR);
-// $query->execute();
-// $results=$query->fetchAll(PDO::FETCH_OBJ);
-// $cnt=1;
-// if($query->rowCount() > 0)
-// {
-// foreach($results as $result)
-// {	?>
+
+if(mysqli_num_rows($select_query_result) > 0)
+{ 
+while($row = mysqli_fetch_assoc($select_query_result))
+{
+?>																					// $query -> bindParam(':pid', $pid, PDO::PARAM_STR);
+
 
 <form name="book" method="post">
 		<div class="selectroom_top">
@@ -136,15 +121,14 @@ $row = mysqli_fetch_array($select_query_result);																					// $query -
 						<label class="inputLabel">Comment</label>
 						<input class="special" type="text" name="comment" required="">
 					</li>
-					<?php if($_SESSION['login'])
-					{?>
+					
 						<li class="spe" align="center">
 					<button type="submit" name="submit2" class="btn-primary btn">Book</button>
 						</li>
-						<?php } else {?>
+					
 							<li class="sigi" align="center" style="margin-top: 1%">
 							<a href="#" data-toggle="modal" data-target="#myModal4" class="btn-primary btn" > Book</a></li>
-							<?php } ?>
+							
 					<div class="clearfix"></div>
 				</ul>
 			</div>

@@ -1,26 +1,21 @@
 <?php
-session_start();
-error_reporting(0);
+
 include('includes/config.php');
-if(strlen($_SESSION['alogin'])==0)
-	{	
-header('location:index.php');
-}
-else{ 
+ 
 	// code for cancel
-if(isset($_REQUEST['eid']))
-	{
-$eid=intval($_GET['eid']);
-$status=1;
+// if(isset($_REQUEST['eid']))
+// 	{
+// $eid=intval($_GET['eid']);
+// $status=1;
 
-$sql = "UPDATE tblenquiry SET Status=:status WHERE  id=:eid";
-$query = $dbh->prepare($sql);
-$query -> bindParam(':status',$status, PDO::PARAM_STR);
-$query-> bindParam(':eid',$eid, PDO::PARAM_STR);
-$query -> execute();
+// $sql = "UPDATE tblenquiry SET Status=:status WHERE  id=:eid";
+// $query = $dbh->prepare($sql);
+// $query -> bindParam(':status',$status, PDO::PARAM_STR);
+// $query-> bindParam(':eid',$eid, PDO::PARAM_STR);
+// $query -> execute();
 
-$msg="Enquiry  successfully read";
-}
+// $msg="Enquiry  successfully read";
+// }
 
 
 
@@ -30,7 +25,7 @@ $msg="Enquiry  successfully read";
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>TMS | Admin manage Bookings</title>
+<title>TP | Admin manage Enquires</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -102,12 +97,10 @@ $msg="Enquiry  successfully read";
 				</div>
 <!--heder end here-->
 <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a><i class="fa fa-angle-right"></i>Manage Enquiries</li>
+                <li class="breadcrumb-item"><a href="dashboard.php">Home</a><i class="fa fa-angle-right"></i>Manage Enquiries</li>
             </ol>
 <div class="agile-grids">	
 				<!-- tables -->
-				<?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
-				else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
 				<div class="agile-tables">
 					<div class="w3l-table-info">
 					  <h2>Manage Enquiries</h2>
@@ -117,7 +110,6 @@ $msg="Enquiry  successfully read";
 						  <th>Ticket id</th>
 							<th>Name</th>
 							<th>Mobile No./ Email</th>
-							
 							<th>Subject </th>
 							<th>Description </th>
 							<th>Posting date </th>
@@ -126,36 +118,33 @@ $msg="Enquiry  successfully read";
 						  </tr>
 						</thead>
 						<tbody>
-<?php $sql = "SELECT * from tblenquiry";
-$query = $dbh -> prepare($sql);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
+<?php $sql = "SELECT * from enquirytbl";
 
-if($query->rowCount() > 0)
-{
-foreach($results as $result)
-{				?>		
+$select_query_result = mysqli_query($con, $sql) or die(mysqli_error($con));
+
+
+while ($row = mysqli_fetch_array($select_query_result)) {
+	?>	
+				
 						  <tr>
-							<td width="120">#TCKT-<?php echo htmlentities($result->id);?></td>
-							<td width="50"><?php echo htmlentities($result->FullName);?></td>
-								<td width="50"><?php echo htmlentities($result->MobileNumber);?> /<br />
-								<?php echo $result->EmailId;?></td>
+							<td width="120">#TCKT- <?php echo $row['id']; ?></td>
+							<td width="50"><?php echo $row['FullName'];?></td>
+								<td width="50"><?php echo $row['MobileNumber'];?> /<br />
+								<?php echo $row['EmailId'];?></td>
 							
 						
-							<td width="200"><?php echo htmlentities($result->Subject);?></a></td>
-							<td width="400"><?php echo htmlentities($result->Description);?></td>
+							<td width="200"><?php echo $row['Subject'];?></a></td>
+							<td width="400"><?php echo $row['Description'];?></td>
 							
-								<td width="50"><?php echo htmlentities($result->PostingDate);?></td>
-								<?php if($result->Status==1)
-{
-	?><td>Read</td>
-<?php } else {?>
+								<td width="50"><?php echo $row['PostingDate'];?></td>
+					<td>Read</td>
 
-<td><a href="manage-enquires.php?eid=<?php echo htmlentities($result->id);?>" onclick="return confirm('Do you really want to read')" >Pending</a>
+
+<td><a href="manage-enquires.php?eid=<?php echo $row['id'];?>" onclick="return confirm('Do you really want to read')" >Pending</a>
 </td>
-<?php } ?>
+
 </tr>
-						 <?php } }?>
+						 <?php }?>
 						</tbody>
 					  </table>
 					</div>
@@ -223,4 +212,3 @@ foreach($results as $result)
 
 </body>
 </html>
-<?php } ?>
