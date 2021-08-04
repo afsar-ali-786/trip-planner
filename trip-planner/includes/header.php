@@ -9,12 +9,11 @@
             <a class="navbar-brand " href="index.php">Home</a>
             <a class="navbar-brand " href="aboutus.php">About</a>
             <a class="navbar-brand " href="package-list.php"> Packages</a>
-
             <a class="navbar-brand " href="privacy.php">Privacy policy</a>
             <?php
                 if (isset($_SESSION['email'])) {
                     ?>
-                <a class="navbar-brand " href="contactus.php">Contact Us</a>
+                <a class="navbar-brand " href="contactus.php">Contact</a>
                 <a class="navbar-brand " href="enquiry.php">Enquiry</a>
                 <?php } ?>
             

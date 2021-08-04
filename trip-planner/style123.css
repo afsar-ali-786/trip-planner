@@ -19,7 +19,7 @@
 .text-area {
   height: 100vh;
   color: white;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.3);
 }
 .header {
   background-image: url("100.jpg");
@@ -61,7 +61,7 @@
   color: white;
 }
 .overlay-c {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.4);
   height: 50vh;
   position: absolute;
   top: 0;

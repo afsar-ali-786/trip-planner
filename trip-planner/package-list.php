@@ -13,6 +13,8 @@ $select_query_result = mysqli_query($con, $select_query) or die(mysqli_error($co
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<!-- Bootstrap Core CSS -->
+	<link rel="stylesheet" href="css/bootstrap.css" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<!-- Custom CSS -->
 	<link href="index.css" rel="stylesheet">
@@ -26,7 +28,7 @@ $select_query_result = mysqli_query($con, $select_query) or die(mysqli_error($co
 
  <!-- Header -->
  		<?php
-		  include 'includes/header.php';
+		  include 'includes/header.php' ;
 		  ?>
 <!--Header end---->
 

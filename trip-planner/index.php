@@ -1,6 +1,5 @@
 <?php
 require("includes/common.php");         //tabase conection 
-
 ?>
 
 <!DOCTYPE html>
@@ -16,19 +15,12 @@ require("includes/common.php");         //tabase conection
 
 
 	<!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
-      crossorigin="anonymous"
+	<link rel="stylesheet" href="css_index/bootstrap.css" />
+	<link rel="stylesheet" href="css_index/bootstrap.min.css" />
+	<link rel="stylesheet" 
+    href="style123.css"
     />
-    <link rel="stylesheet" href="style123.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-      crossorigin="anonymous"
-    />
+   
 
 </head>
 <body>
@@ -51,20 +43,42 @@ require("includes/common.php");         //tabase conection
 		  <div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav ms-auto">
 			  <li class="nav-item">
-				<a class="nav-link active" aria-current="page" href="index.php">Home</a>
+				<a class="nav-link acitve" aria-current="page" href="index.php">Home</a>
 			  </li>
 			  <li class="nav-item">
 				<a class="nav-link" href="package-list.php">Packages</a>
 			  </li>
+			  <?php
+			  if (isset($_SESSION['email'])) {
+				  ?>
 			  <li class="nav-item">
 				<a class="nav-link" href="contactus.php">Contact</a>
 			  </li>
 			  <li class="nav-item">
-				<a class="nav-link" href="signup.php">Registration</a>
+				<a class="nav-link" href="contactus.php">Enquiry</a>
+			  </li>
+			  <?php } ?>
+			  <?php
+                if (isset($_SESSION['email'])) {
+                    ?>
+					<li class="nav-item">
+				<a class="nav-link btn btn-1 text-black-50" href="logout_script.php">Logout</a>
+			  </li>
+                    
+                    
+                    <?php
+                } else {
+                    ?>
+                     <li class="nav-item">
+				<a class="nav-link" href="signup.php">Signup</a>
 			  </li>
 			  <li class="nav-item">
 				<a class="nav-link btn btn-1 text-black-50" href="login.php">Login_</a>
 			  </li>
+                        <?php
+                    }
+                    ?>
+			 
 			</ul>
 		  </div>
 		</div>
@@ -88,7 +102,7 @@ require("includes/common.php");         //tabase conection
 		</div>
 	  </div>
 
-<!--- rooms ---->
+<!--- SECTION 1 ---->
 <section class="services">
 	<div class="container text-center">
 	  <h1 style="margin: 5% 5%;">Our Best Services</h1>
@@ -126,14 +140,16 @@ require("includes/common.php");         //tabase conection
 	  </div>
 	</div>
   </section>
+  <!--- /SECTION 1 ---->
 
+<!--- SECTION 2 ---->
 <section class="image-hero">
 	<div class="overlay d-flex flex-column align-item-center 
 	justify-content-center">
 	<div class="container">
 	<div class="row">
 	<div class="col-md-8"><br><br>
-		<h3 class="display-3 text-white">Book now and get exciting Offers</h3>
+		<h5 class="display-6 text-white">Book now and get exciting Offers</h5>
 		<p class="about-p lead text-white">We are a group of people who are well-versed about 
 			the fun and rigors of traveling.</p>
 
@@ -146,7 +162,9 @@ require("includes/common.php");         //tabase conection
 </div>
 </div>
 </section>
-<!--- rooms ---->
+<!--- /SECTION 2 ---->
+
+<!--- SECTION 3 ---->
 <section class="mt-5 mb-5">
 	<div class="container">
 	  <div class="row">
@@ -169,6 +187,8 @@ require("includes/common.php");         //tabase conection
 			</div>
 		  </div>
 		</div>
+<!--- /SECTION 3 ---->
+
 		<div class="col-md-6">
 		  <h1>About tripplanner</h1>
 		  <p class="lead mt-5">
@@ -185,46 +205,49 @@ require("includes/common.php");         //tabase conection
 	  <div class="row">
 		<div class="col-lg-4">
 		  <div class="card">
-			<h2 class="c-1 overlay-c">Poland</h2>
-			<img src="3.jpg" alt="" class="img-card" />
+			<h2 class="c-1 overlay-c">Mumbai</h2>
+			<img src="images/mumbai.PNG" alt="" class="img-card" />
 		  </div>
 		</div>
 		<div class="col-lg-4">
 		  <div class="card">
-			<h2 class="c-1 overlay-c">India</h2>
-			<img src="4.jpg" alt="" class="img-card" />
+			<h2 class="c-1 overlay-c">Delhi</h2>
+			<img src="images/delhi.png" alt="" class="img-card" />
 		  </div>
 		</div>
 		<div class="col-lg-4">
 		  <div class="card">
-			<h2 class="c-1 overlay-c">Switzerland</h2>
-			<img src="5.jpg" alt="" class="img-card" />
+			<h2 class="c-1 overlay-c">Goa</h2>
+			<img src="images/goa.jpg" alt="" class="img-card" />
 		  </div>
 		</div>
 	  </div>
 	  <div class="row mt-3 mb-5">
 		<div class="col-lg-4">
 		  <div class="card">
-			<h2 class="c-1 overlay-c">London</h2>
-			<img src="6.jpg" alt="" class="img-card" />
+			<h2 class="c-1 overlay-c">Jaipur</h2>
+			<img src="images/jaipur.jpg" alt="" class="img-card" />
 		  </div>
 		</div>
 		<div class="col-lg-4">
 		  <div class="card">
-			<h2 class="c-1 overlay-c">New york</h2>
-			<img src="7.jpg" alt="" class="img-card" />
+			<h2 class="c-1 overlay-c">Udaipur</h2>
+			<img src="images/udaipur.jpg" alt="" class="img-card" />
 		  </div>
 		</div>
 		<div class="col-lg-4">
 		  <div class="card">
-			<h2 class="c-1 overlay-c">Paris</h2>
-			<img src="8.jpg" alt="" class="img-card" />
+			<h2 class="c-1 overlay-c">Agra</h2>
+			<img src="images/agra.jpg" alt="" class="img-card" />
 		  </div>
 		</div>
 	  </div>
 	</div>
   </section>
-  <section class="tips">
+  <!--- SECTION 3 ---->
+
+  <!--- SECTION 3 ---->
+    <section class="tips">
 	<div class="container">
 	  <div class="row">
 		<div class="col-md-6">
@@ -242,8 +265,44 @@ But planning a trip doesn’t have to be the source of constant anxiety and over
 	  </div>
 	</div>
   </section>
-  <section>
+  <!--- SECTION 3 ---->
 
+  <!--- SECTION 4 ---->
+  <section>
+      <div class="container"><br><br><br><br>
+ 		 <h1 class="text-center">contact us</h1>
+        <form
+          class="d-flex justify-content-center align-items-center flex-column"
+        >
+          <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control input" placeholder="Name" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email address</label>
+            <input
+              type="email"
+              class="form-control input"
+              placeholder="Name@Emailaddress"
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Your message</label>
+            <input
+              type="text"
+              class="form-control input"
+              placeholder="message"
+            />
+          </div>
+		  <button class="btn btn-1 btn-danger"><a href="#">Submit</a></button>
+        </form>
+      </div>
+
+    </section>
+
+  <!--- /SECTION 4 ---->
+  <section>
+<!--- SECTION 3 ---->
 <br><br>
 
 	 <!--Footer-->

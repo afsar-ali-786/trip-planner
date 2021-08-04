@@ -1,4 +1,11 @@
 
+<?php
+require("includes/common.php");
+
+                if (isset($_SESSION['email'])) {
+					?>
+       
+            
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,6 +56,6 @@
 	 <!--Footer end-->
 </body>
 
-
+<?php } ?>
 
 </html>	

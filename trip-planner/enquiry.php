@@ -19,6 +19,8 @@ $query_result = mysqli_query($con, $sql) or die(mysqli_error($con));
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Trip planner | TP</title>
     <!-- Bootstrap Core CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<!-- Custom CSS -->
 	<link href="index.css" rel="stylesheet">
@@ -37,32 +39,35 @@ $query_result = mysqli_query($con, $sql) or die(mysqli_error($con));
 <!--- privacy ---->
 <div class="privacy">
 	<div class="container">
-		<h3>Enquiry Form </h3>
+		<h3><center>  Enquiry Form  </h3>
 		<form name="enquiry" method="post">
-	
+		<center>
 	<p style="width$ 350px;">
 		
-			<b>Full name</b>  <input type="text" name="fname" class="form-control" id="fname" placeholder="Full Name" required="">
-	</p> 
+			 <input type="text" name="fname" class="form-control input" id="fname" placeholder="Full Name" required="">
+	</p> <br>
 <p style="width$ 350px;">
-<b>Email</b>  <input type="email" name="email" class="form-control" id="email" placeholder="Valid Email id" required="">
+  <input type="email" name="email" class="form-control input" id="email" placeholder="Valid Email id" required="">
 	</p> 
+	<br>
+	<p style="width$ 350px;">
+
+  <input type="text" name="mobileno" class="form-control input" id="mobileno" maxlength="10" placeholder="10 Digit mobile No" required="">
+	</p> <br>
 
 	<p style="width$ 350px;">
-<b>Mobile No</b>  <input type="text" name="mobileno" class="form-control" id="mobileno" maxlength="10" placeholder="10 Digit mobile No" required="">
-	</p> 
-
+ <input type="text" name="subject" class="form-control input" id="subject"  placeholder="Subject" required="">
+	</p> <br><br>
 	<p style="width$ 350px;">
-<b>Subject</b>  <input type="text" name="subject" class="form-control" id="subject"  placeholder="Subject" required="">
-	</p> 
-	<p style="width$ 350px;">
-<b>Description</b>  <textarea name="description" class="form-control" rows="6" cols="50" id="description"  placeholder="Description" required=""></textarea> 
-	</p> 
+  <textarea name="description" class="form-control input" rows="6" cols="50" id="description"  placeholder=".    Description" required=""></textarea> 
+	</p> <br>
 
 		<p style="width$ 350px;">
-		<button type="submit" name="submit1" class="btn-primary btn" onclick="success()">Submit</button>
-		</p>
-</form>
+		<button type="submit" 
+		name="submit1" class="btn-primary btn btn-1" onclick="success()">Submit</button>
+		</p><br>
+	
+	</form>
 
 		
 	</div>

@@ -42,14 +42,14 @@ require("includes/config.php");
                 <li class="breadcrumb-item"><a href="dashboard.php">Home</a> <i class="fa fa-angle-right"></i></li>
         </ol>
 <!-- four-grids here 02 -->
-		<div class="four-grids">
+		<div class="four-grids"><a href="manage-users.php"> 
 					<div class="col-md-3 four-grid">
 						<div class="four-agileits">
-							<div class="icon">
+						 <div class="icon">
 								<i class="glyphicon glyphicon-user" aria-hidden="true"></i>
 							</div>
 							<div class="four-text">
-								<h3>User</h3>
+								<h3>User </h3>
 <?php
 $sql1 = "SELECT count(*) as count from userstbl";
 $select_query_result = mysqli_query($con, $sql1) or die(mysqli_error($con));             
@@ -62,10 +62,10 @@ while($row = mysqli_fetch_assoc($select_query_result)){
 								
 							</div>
 							
-						</div>
+						</div></a>
 					</div>
 					
-				<div class="col-md-3 four-grid">
+				<div class="col-md-3 four-grid"><a href="manage-bookings.php">
 						<div class="four-agileinfo">
 							<div class="icon">
 								<i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
@@ -84,10 +84,10 @@ while($row = mysqli_fetch_assoc($select_query_result)){
 
 
 								</div>	
-						</div>
+						</div></a>
 					</div>
 
-					<div class="col-md-3 four-grid">
+					<div class="col-md-3 four-grid"><a href="manage-enquires.php">
 						<div class="four-w3ls">
 							<div class="icon">
 								<i class="glyphicon glyphicon-folder-open" aria-hidden="true"></i>
@@ -106,16 +106,16 @@ while($row = mysqli_fetch_assoc($select_query_result)){
 								
 							</div>
 							
-						</div>
+						</div></a>
 				   </div>
-					<div class="col-md-3 four-grid">
+					<div class="col-md-3 four-grid"><a href="manage-packages.php">
 						<div class="four-wthree">
 							<div class="icon">
 								<i class="glyphicon glyphicon-briefcase" aria-hidden="true"></i>
 							</div>
 							<div class="four-text">
 						
-								<h3>Toatal packages</h3>
+								<h3>Total packages</h3>
 								
 								<?php
 $sql1 = "SELECT count(*) as count from tourpackagestbl";
@@ -128,7 +128,7 @@ while($row = mysqli_fetch_assoc($select_query_result)){
 
 							</div>
 							
-						</div>
+						</div></a>
 					   </div>
 						<div class="clearfix"></div>
 					</div>

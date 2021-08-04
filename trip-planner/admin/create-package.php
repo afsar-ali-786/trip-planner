@@ -27,8 +27,8 @@ move_uploaded_file($_FILES["packageimage"]["tmp_name"],"pacakgeimages/".$_FILES[
 
 $sql="INSERT INTO tourpackagestbl(PackageName,PackageType,PackageLocation,PackagePrice,PackageFetures,PackageDetails,PackageImage) 
 VALUES('" . $pname . "','" . $ptype . "','" . $plocation . "','" . $pprice ."','" . $pfeatures . "' ,'" . $pdetails . "','" . $pimage . "')";
-=
 
+$result =mysqli_query($con, $sql) or die(mysqli_error($con));
 
 }
 ?>
@@ -70,7 +70,7 @@ VALUES('" . $pname . "','" . $ptype . "','" . $plocation . "','" . $pprice ."','
 		<!--grid-->
  	<div class="grid-form">
  
-<!-- FILLING THE PACKAGE DETAILS THAT GOES TO DYNAMICALLY TO YOUR MAIN WEBSITES-->
+<!-- FILLING THE PACKAGE DETAILS THAT GOES TO DYNAMICALLY TO OUR MAIN WEBSITES-->
   <div class="grid-form1">
   	       <h3>Create Package</h3>
 			

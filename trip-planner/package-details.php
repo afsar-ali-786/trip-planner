@@ -1,19 +1,24 @@
 <?php
 include('includes/common.php');
+
 if(isset($_POST['submit2']))
 {
 $pid=intval($_GET['pkgid']);
-$useremail=$_SESSION['login'];
+$useremail=$_SESSION['email'];
+$useremail = mysqli_real_escape_string($con, $useremail);
+
 $fromdate=$_POST['fromdate'];
 $todate=$_POST['todate'];
+
 $comment=$_POST['comment'];
+$comment = mysqli_real_escape_string($con, $comment);
+
 $status=0;
-$sql="INSERT INTO tblbooking(PackageId,UserEmail,FromDate,ToDate,Comment,status) VALUES(:pid,:useremail,:fromdate,:todate,:comment,:status)";
-$result =mysqli_query($con, $sql) or die(mysqli_error($con));
+$sql="INSERT INTO tblbooking(PackageId,UserEmail,FromDate,ToDate,Comment,status) VALUES('" . $pid . "','" . $useremail . "','" . $fromdate . "','" . $todate ."','" . $comment . "' ,'" . $status . "')";
 
+ $result =mysqli_query($con, $sql) or die(mysqli_error($con));
 
-
-
+}
 ?>
 
 <!DOCTYPE HTML>
@@ -62,14 +67,14 @@ $result =mysqli_query($con, $sql) or die(mysqli_error($con));
 		
 		<?php 
 $pid=intval($_GET['pkgid']);
-$select_query = "SELECT * from tourpackagestbl where PackageId=$pid";
-$select_query_result = mysqli_query($con, $select_query) or die(mysqli_error($con));//$query = $dbh->prepare($sql);
-
+$select_query1 = "SELECT * from tourpackagestbl where PackageId=$pid";
+$select_query_result = mysqli_query($con, $select_query1) or die(mysqli_error($con));
+																					
 if(mysqli_num_rows($select_query_result) > 0)
 { 
 while($row = mysqli_fetch_assoc($select_query_result))
 {
-?>																					// $query -> bindParam(':pid', $pid, PDO::PARAM_STR);
+?>
 
 
 <form name="book" method="post">
@@ -111,24 +116,26 @@ while($row = mysqli_fetch_assoc($select_query_result))
 		<div class="clearfix"></div>
 	</div>
 		
+	<?php } } ?>
 	
 	<div class="selectroom_top">
 		<h2>Travels</h2>
-		<div class="selectroom-info animated wow fadeInUp animated" data-wow-duration="1200ms" data-wow-delay="500ms" style="visibility: visible; animation-duration: 1200ms; animation-delay: 500ms; animation-name: fadeInUp; margin-top: -70px">
+		<div class="selectroom-info animated wow fadeInUp animated"   style="visibility: visible; animation-duration: 1200ms; animation-delay: 500ms; animation-name: fadeInUp; margin-top: -70px">
 				<ul>
 				
 					<li class="spe">
 						<label class="inputLabel">Comment</label>
 						<input class="special" type="text" name="comment" required="">
 					</li>
-					
+					<?php if(isset($_SESSION['email']))
+					{?>
 						<li class="spe" align="center">
-					<button type="submit" name="submit2" class="btn-primary btn">Book</button>
+					<button type="submit" name="submit2" class="btn-primary btn" onclick="success()">Book</button>
 						</li>
-					
+						<?php } else {?>
 							<li class="sigi" align="center" style="margin-top: 1%">
-							<a href="#" data-toggle="modal" data-target="#myModal4" class="btn-primary btn" > Book</a></li>
-							
+							<a href="login.php" data-toggle="modal" data-target="#myModal4" class="btn-primary btn" > Book</a></li>
+							<?php } ?>
 					<div class="clearfix"></div>
 				</ul>
 			</div>
@@ -140,6 +147,14 @@ while($row = mysqli_fetch_assoc($select_query_result))
 
 	</div>
 </div>
+
+ <!-- script-for alert box for successful -->
+ <script>
+function success() {
+  alert("Package has been Booked Successfully! ");
+  
+}
+</script>
 <!--- /selectroom ---->
 
 <!--- footer- ---->

@@ -1,4 +1,8 @@
+<?php
+require("includes/common.php");
 
+                if (isset($_SESSION['email'])) {
+					?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -93,7 +97,7 @@ You must atleast 18 years of age to transact directly with TRIPPLANNERand also t
 	 ?>
 	 <!--Footer end-->
 </body>
-
+<?php } ?>
 
 
 </html>	
